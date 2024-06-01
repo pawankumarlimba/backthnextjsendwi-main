@@ -14,7 +14,7 @@ interface singupProps {
   
 }
 
-const page: React.FC<singupProps> = ({ handleChangeState }) => {
+const Page: React.FC<singupProps> = ({ handleChangeState }) => {
   const [email,setemail]=useState('');
   const [password,setpassword]=useState('');
  
@@ -167,4 +167,4 @@ const LabelInputContainer = ({
   );
 };
 
-export default page
+export default Page

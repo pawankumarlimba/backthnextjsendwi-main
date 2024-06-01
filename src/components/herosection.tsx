@@ -16,6 +16,8 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import Image from "next/image";
+import { View } from "lucide-react";
 
 
 
@@ -70,7 +72,7 @@ const Herosection: React.FC<HerosectionProps> = ({ handleChangeState }) => {
         <DialogHeader>
           <DialogTitle>Upload Arts</DialogTitle>
           <DialogDescription>
-             your Art here. Click save when you're done.
+             your Art here. Click save when you &apos re done.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
