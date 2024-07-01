@@ -50,9 +50,8 @@ function Footer() {
           <a href='/admindashbord'>
             <p className='text-amber-300'>Admin</p>
           </a>
-          <a href='https://codeforces.com/profile/pawan_kumar_limba'>
-            <p className='text-amber-300'>Codeforce</p>
-          </a>
+          
+          
         </div>
       </div>
     </footer>

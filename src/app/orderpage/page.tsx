@@ -90,7 +90,7 @@ const Page: React.FC<ourartsProps> = ({ handleChangeState }) => {
             {filteredCard.map((webinar, index) => (
                 <div key={index} className="min-h-screen  grid grid-cols-1 sm:grid-cols-5 lg:grid-cols-3   ">
                     <div className="lg:col-span-1  sm:col-span-2  flex justify-center mt-10 ml-4 mr-4 sm:mt-10">
-                        <Image className=" sm:h-[40vh] sm:w-auto md:h-[30vh] lg:h-[70vh] lg:w-[25vw] border-4 border-rgb(54,88,94) rounded-[10%] overflow-hidden" src={webinar.url} alt="" />
+                        <img className=" sm:h-[40vh] sm:w-auto md:h-[30vh] lg:h-[70vh] lg:w-[25vw] border-4 border-rgb(54,88,94) rounded-[10%] overflow-hidden" src={webinar.url} alt="" />
                     </div>
                     <div className=" sm:col-span-3 lg:col-span-2 mt-6 sm:mt-10">
                         <h1 className="text-black text-2xl sm:text-3xl mb-4 ml-4 sm:mb-8">{webinar.name}</h1>

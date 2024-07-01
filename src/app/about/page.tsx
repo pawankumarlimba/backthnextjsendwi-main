@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Navbar3 from "@/components/Navbar3";
 import {
     IconBrandInstagram,
@@ -8,12 +8,12 @@ import Link from "next/link";
 import Image from 'next/image';
 import { useEffect, useState } from "react";
 
-interface AboutProps {
+interface PageProps {
   handleChangeState: (newValue: boolean) => void;
 }
 
-const Page: React.FC<AboutProps> = ({ handleChangeState }) => {
-  // Retrieve isLoggedIn value from local storage
+const Page: React.FC<PageProps> = ({ handleChangeState }) => {
+ 
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
     const storedValue = localStorage.getItem("isLoggedIn");
     return storedValue ? JSON.parse(storedValue) : true;
