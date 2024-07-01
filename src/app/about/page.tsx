@@ -1,4 +1,5 @@
 'use client';
+
 import Navbar3 from "@/components/Navbar3";
 import {
     IconBrandInstagram,
@@ -13,7 +14,6 @@ interface PageProps {
 }
 
 const Page: React.FC<PageProps> = ({ handleChangeState }) => {
- 
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
     const storedValue = localStorage.getItem("isLoggedIn");
     return storedValue ? JSON.parse(storedValue) : true;
