@@ -21,24 +21,30 @@ import { View } from "lucide-react";
 
 
 
-interface HerosectionProps {
-  handleChangeState: (newValue: boolean) => void;
-}
+/*interface HerosectionProps {
+  params?: any;
+  searchParams?: any;
+  handleChangeState?: (newValue: boolean) => void;
+}*/
 
-const Herosection: React.FC<HerosectionProps> = ({ handleChangeState }) => {
+const Herosection/*: React.FC<HerosectionProps>*/ = ({ /*handleChangeState*/ }) => {
   // Retrieve isLoggedIn value from local storage
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
     const storedValue = localStorage.getItem("isLoggedIn");
     return storedValue ? JSON.parse(storedValue) : true;
   });
-   handleChangeState = (newValue: boolean) => {
+  const  handleChangeState = (newValue: boolean) => {
     setIsLoggedIn(newValue);
   };
   useEffect(() => {
-    const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+    if (typeof window !== 'undefined') {
+      const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+      if (storedIsLoggedIn) {
+        setIsLoggedIn(JSON.parse(storedIsLoggedIn));
+      }
     if (storedIsLoggedIn === 'true') {
       handleChangeState(true);
-    }
+    }}
   }, []);
 
   useEffect(() => {

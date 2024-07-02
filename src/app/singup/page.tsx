@@ -8,13 +8,13 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Navbar3 from "@/components/Navbar3";
 
-interface singupProps {
+/*interface singupProps {
   isLoggedIn: boolean;
   handleChangeState: (newValue: boolean) => void;
   
-}
+}*/
 
-const Page: React.FC<singupProps> = ({ handleChangeState }) => {
+const Page/*: React.FC<singupProps>*/ = (/*{ handleChangeState }*/) => {
   const [email,setemail]=useState('');
   const [password,setpassword]=useState('');
  
@@ -25,19 +25,24 @@ const Page: React.FC<singupProps> = ({ handleChangeState }) => {
     const storedValue = localStorage.getItem("isLoggedIn");
     return storedValue ? JSON.parse(storedValue) : true;
   });
-   handleChangeState = (newValue: boolean) => {
+  const  handleChangeState = (newValue: boolean) => {
     setIsLoggedIn(newValue);
   };
   useEffect(() => {
-    const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+    if (typeof window !== 'undefined') {
+      const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+      if (storedIsLoggedIn) {
+        setIsLoggedIn(JSON.parse(storedIsLoggedIn));
+      }
     if (storedIsLoggedIn === 'true') {
       handleChangeState(true);
-    }
+    }}
   }, []);
 
   useEffect(() => {
     localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
   }, [isLoggedIn]);
+
   
   
    const handleSubmit =async (e: React.FormEvent<HTMLFormElement>) => {

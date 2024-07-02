@@ -2,6 +2,7 @@
 
 import Navbar3 from "@/components/Navbar3";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 
 
@@ -51,11 +52,31 @@ const hovercard = [
     link: "/uploads/member-2.jpg",
   },
 ];
+const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
+  const storedValue = localStorage.getItem("isLoggedIn");
+  return storedValue ? JSON.parse(storedValue) : true;
+});
+const  handleChangeState = (newValue: boolean) => {
+  setIsLoggedIn(newValue);
+};
+useEffect(() => {
+  if (typeof window !== 'undefined') {
+    const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+    if (storedIsLoggedIn) {
+      setIsLoggedIn(JSON.parse(storedIsLoggedIn));
+    }
+  if (storedIsLoggedIn === 'true') {
+    handleChangeState(true);
+  }}
+}, []);
+useEffect(() => {
+  localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+}, [isLoggedIn]);
   return (
     
     <>
     <div  className="bg-white ">
-    <Navbar3 />
+    <Navbar3 isLoggedIn={isLoggedIn} handleChangeState={handleChangeState} />
     </div>
     {hovercard.map((webinar,index)=>(
 

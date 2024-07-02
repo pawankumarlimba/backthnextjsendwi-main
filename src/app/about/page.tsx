@@ -9,27 +9,34 @@ import Link from "next/link";
 import Image from 'next/image';
 import { useEffect, useState } from "react";
 
-interface PageProps {
+/*interface PageProps {
+  params?: any;
+  searchParams?: any;
   handleChangeState: (newValue: boolean) => void;
+ 
 }
-
-const Page: React.FC<PageProps> = ({ handleChangeState }) => {
+*/
+const Page/*: React.FC<PageProps> */= (/*{ handleChangeState }*/) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
     const storedValue = localStorage.getItem("isLoggedIn");
     return storedValue ? JSON.parse(storedValue) : true;
   });
-
+  const  handleChangeState = (newValue: boolean) => {
+    setIsLoggedIn(newValue);
+  };
   useEffect(() => {
-    const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+    if (typeof window !== 'undefined') {
+      const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+      if (storedIsLoggedIn) {
+        setIsLoggedIn(JSON.parse(storedIsLoggedIn));
+      }
     if (storedIsLoggedIn === 'true') {
       handleChangeState(true);
-    }
-  }, [handleChangeState]);
-
+    }}
+  }, []);
   useEffect(() => {
     localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
   }, [isLoggedIn]);
-
   return (
     <>
       <div className="bg-white">

@@ -3,9 +3,9 @@ import Navbar3 from "@/components/Navbar3";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import axios from "axios";
 import { useEffect, useState } from "react";
-interface ourartsProps {
+/*interface ourartsProps {
   handleChangeState: (newValue: boolean) => void;
-}
+}*/
 interface Webinar {
   _id: string;
   name:string,
@@ -13,20 +13,24 @@ interface Webinar {
   description: string;
   url: string;
 }
-const Page: React.FC<ourartsProps> = ({ handleChangeState }) => {
+const Page/*: React.FC<ourartsProps>*/ = (/*{ handleChangeState }*/) => {
   // Retrieve isLoggedIn value from local storage
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
     const storedValue = localStorage.getItem("isLoggedIn");
     return storedValue ? JSON.parse(storedValue) : true;
   });
-   handleChangeState = (newValue: boolean) => {
+  const  handleChangeState = (newValue: boolean) => {
     setIsLoggedIn(newValue);
   };
   useEffect(() => {
-    const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+    if (typeof window !== 'undefined') {
+      const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+      if (storedIsLoggedIn) {
+        setIsLoggedIn(JSON.parse(storedIsLoggedIn));
+      }
     if (storedIsLoggedIn === 'true') {
       handleChangeState(true);
-    }
+    }}
   }, []);
 
   useEffect(() => {

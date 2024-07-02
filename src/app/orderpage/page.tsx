@@ -35,10 +35,10 @@ interface Webinar {
     url: string;
   }
 
-interface ourartsProps {
+/*interface ourartsProps {
   handleChangeState: (newValue: boolean) => void;
-}
-const Page: React.FC<ourartsProps> = ({ handleChangeState }) => {
+}*/
+const Page/*: React.FC<ourartsProps>*/ = (/*{ handleChangeState }*/) => {
     const [_lang, setLang] = useState<string | null>(null);
     const [filteredCard, setFilteredCard] = useState<Webinar[]>([]);
     const [Allarts, setAllarts] = useState<  Webinar[]>([]);
@@ -69,19 +69,24 @@ const Page: React.FC<ourartsProps> = ({ handleChangeState }) => {
       const storedValue = localStorage.getItem("isLoggedIn");
       return storedValue ? JSON.parse(storedValue) : true;
     });
-     handleChangeState = (newValue: boolean) => {
+    const  handleChangeState = (newValue: boolean) => {
       setIsLoggedIn(newValue);
     };
     useEffect(() => {
-      const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+      if (typeof window !== 'undefined') {
+        const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+        if (storedIsLoggedIn) {
+          setIsLoggedIn(JSON.parse(storedIsLoggedIn));
+        }
       if (storedIsLoggedIn === 'true') {
         handleChangeState(true);
-      }
+      }}
     }, []);
   
     useEffect(() => {
       localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
     }, [isLoggedIn]);
+  
     return (
         <>
             <div className="bg-white ">
