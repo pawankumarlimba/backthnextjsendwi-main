@@ -9,7 +9,7 @@ const nextConfig = {
       'res.cloudinary.com',
     ],
   },
-  output: 'export',
+ 
   
 };
 

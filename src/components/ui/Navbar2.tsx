@@ -101,7 +101,7 @@ const Navbar2 = () => {
                         <>
                             <DropdownMenuItem>
                                 <User className="mr-2 h-4 w-4" />
-                                <Link href={"/orders"}>
+                                <Link href={'/orderpage'}>
                                     <span>Order</span>
                                 </Link>
                             </DropdownMenuItem>

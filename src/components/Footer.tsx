@@ -1,3 +1,4 @@
+"use client";
 function Footer() {
   return (
     <footer className=' text-white py-12 flex justify-center'>

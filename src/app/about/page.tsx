@@ -1,42 +1,42 @@
 'use client';
 
 import Navbar3 from "@/components/Navbar3";
-import {
-    IconBrandInstagram,
-    IconBrandLinkedin,
-} from "@tabler/icons-react";
+import { IconBrandInstagram, IconBrandLinkedin } from "@tabler/icons-react";
 import Link from "next/link";
 import Image from 'next/image';
 import { useEffect, useState } from "react";
 
-/*interface PageProps {
-  params?: any;
-  searchParams?: any;
-  handleChangeState: (newValue: boolean) => void;
- 
-}
-*/
-const Page/*: React.FC<PageProps> */= (/*{ handleChangeState }*/) => {
+function Page() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
-    const storedValue = localStorage.getItem("isLoggedIn");
-    return storedValue ? JSON.parse(storedValue) : true;
+    if (typeof window !== 'undefined') {
+      const storedValue = localStorage.getItem("isLoggedIn");
+      return storedValue ? JSON.parse(storedValue) : true;
+    }
+    return true;
   });
-  const  handleChangeState = (newValue: boolean) => {
+
+  const handleChangeState = (newValue: boolean) => {
     setIsLoggedIn(newValue);
   };
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
       if (storedIsLoggedIn) {
         setIsLoggedIn(JSON.parse(storedIsLoggedIn));
       }
-    if (storedIsLoggedIn === 'true') {
-      handleChangeState(true);
-    }}
+      if (storedIsLoggedIn === 'true') {
+        handleChangeState(true);
+      }
+    }
   }, []);
+
   useEffect(() => {
-    localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+    }
   }, [isLoggedIn]);
+
   return (
     <>
       <div className="bg-white">
@@ -57,10 +57,10 @@ const Page/*: React.FC<PageProps> */= (/*{ handleChangeState }*/) => {
                   <h2 className="card-title text-xl">Team Leader</h2>
                   <p>B.Tech || Mechanical Engineering ||NIT Agartala</p>
                   <div className="card-actions items-center flex flex-row justify-center">
-                    <Link href={"https://www.linkedin.com/in/swati-kumari-355173236/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"}>
+                    <Link href="https://www.linkedin.com/in/swati-kumari-355173236/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
                       <IconBrandLinkedin className="h-8 w-8 text-neutral-800 dark:text-neutral-300 mb-3 mt-1" />
                     </Link>
-                    <Link href={"https://www.instagram.com/swatii_thakurr_?igsh=NTZuZmpseWpvZ244"}>
+                    <Link href="https://www.instagram.com/swatii_thakurr_?igsh=NTZuZmpseWpvZ244">
                       <IconBrandInstagram className="h-8 w-8 text-neutral-800 dark:text-neutral-300 mb-3 mt-1" />
                     </Link>
                   </div>
@@ -77,10 +77,10 @@ const Page/*: React.FC<PageProps> */= (/*{ handleChangeState }*/) => {
                   <h2 className="card-title text-xl">Team Member</h2>
                   <p>B.Tech|| CS Engineering || IIIT Agartala</p>
                   <div className="card-actions items-center flex flex-row justify-center">
-                    <Link href={"https://www.linkedin.com/in/singhdev18/"}>
+                    <Link href="https://www.linkedin.com/in/singhdev18/">
                       <IconBrandLinkedin className="h-8 w-8 text-neutral-800 dark:text-neutral-300 mb-3 mt-1" />
                     </Link>
-                    <Link href={"https://www.instagram.com/devfpv7?igsh=MWxjZjN3OG82eHJwYg%3D%3D"}>
+                    <Link href="https://www.instagram.com/devfpv7?igsh=MWxjZjN3OG82eHJwYg%3D%3D">
                       <IconBrandInstagram className="h-8 w-8 text-neutral-800 dark:text-neutral-300 mb-3 mt-1" />
                     </Link>
                   </div>
@@ -97,10 +97,10 @@ const Page/*: React.FC<PageProps> */= (/*{ handleChangeState }*/) => {
                   <h2 className="card-title text-xl">Team Member</h2>
                   <p>B.Tech|| BioTech. Engineering ||NIT Agartala</p>
                   <div className="card-actions items-center flex flex-row justify-center">
-                    <Link href={"https://www.linkedin.com/in/rajsecrets/"}>
+                    <Link href="https://www.linkedin.com/in/rajsecrets/">
                       <IconBrandLinkedin className="h-8 w-8 text-neutral-800 dark:text-neutral-300 mb-3 mt-1" />
                     </Link>
-                    <Link href={"https://www.instagram.com/rajsecrets/"}>
+                    <Link href="https://www.instagram.com/rajsecrets/">
                       <IconBrandInstagram className="h-8 w-8 text-neutral-800 dark:text-neutral-300 mb-3 mt-1" />
                     </Link>
                   </div>
