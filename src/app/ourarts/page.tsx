@@ -1,6 +1,4 @@
-// pages/ourarts/page.tsx
 
-// Add the "use client" directive to indicate this is a client-side component
 'use client';
 
 import Navbar3 from "@/components/Navbar3";
